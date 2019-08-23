@@ -3,16 +3,29 @@ numOfLoops = int(input())
 for index in range(numOfLoops):
     arrayLenght = input().split(" ")
 
-    inpArray = input().split(" ") + input().split(" ")
-    filteredArray = set([x for x in inpArray if inpArray.count(x)%2 != 0])
-    print(len(filteredArray))
-
-    # inpArray.sort()
+    array1 = input().split(" ")
+    array2 = input().split(" ")
     
-    # tst = 0
-    # controlArray = [0] * (int(arrayLenght[0]) + int(arrayLenght[1]))
-    # for x in inpArray:
-    #     controlArray[int(x)] = controlArray[int(x)] + 1
+    array1.sort()
+    array2.sort()
 
-    # mod_sums = [s % 2 for s in controlArray]
-    # print(mod_sums.count(1))
+    equalEments = 0
+
+    i = 0
+    j = 0
+    while (i < (int(arrayLenght[0])) and j < (int(arrayLenght[1])) ):
+        if (array1[i] == array2[j]):
+            equalEments = equalEments + 1
+            i = i + 1
+            j = j + 1
+        else:
+            if (array1[i] > array2[j]):
+                j = j + 1
+            else:
+                i = i + 1
+    
+    totalItens = int(arrayLenght[0]) + int(arrayLenght[1])
+   
+    totalDiffItens = totalItens - 2*equalEments
+
+    print(str(totalDiffItens))
